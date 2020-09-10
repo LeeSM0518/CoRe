@@ -2,7 +2,7 @@
 
 ## 도메인
 
-![image](https://user-images.githubusercontent.com/43431081/92589632-ca0c9700-f2d5-11ea-91b2-35b7cc0ab4e8.png)
+![image](https://user-images.githubusercontent.com/43431081/92700070-59bf4d80-f389-11ea-9dfc-42a61f2e3714.png)
 
 <br>
 
@@ -14,13 +14,14 @@
 
   | 한글               | 영어            |
   | ------------------ | --------------- |
-  | 회원               | User            |
+  | 회원               | Member          |
   | 이름               | Name            |
   | 사진               | Photo           |
   | 이메일             | Email           |
   | 비밀번호           | Password        |
   | 관심사             | Interests       |
-  | 팔로우             | Follows         |
+  | 팔로우             | Following       |
+  | 팔로워             | Followers       |
   | 한줄 소개          | Introduction    |
   | 총 받은 좋아요 수  | CountOfLikes    |
   | 작성한 피드들      | WrittenFeeds    |
@@ -62,17 +63,17 @@
 
 * *해시 태그 엔티티*
 
-  | 한글      | 영어         |
-  | --------- | ------------ |
-  | 해시 태그 | Hashtag      |
-  | 이름      | Name         |
-  | 태깅 수   | CountOfTaged |
+  | 한글      | 영어          |
+  | --------- | ------------- |
+  | 해시 태그 | Hashtag       |
+  | 이름      | Name          |
+  | 태깅 수   | CountOfTagged |
 
 <br>
 
 ### 다이어그램
 
-![image](https://user-images.githubusercontent.com/43431081/92624886-f985c880-f302-11ea-8b9f-6c14b417514e.png)
+![image](https://user-images.githubusercontent.com/43431081/92700228-8b381900-f389-11ea-9466-c25d9eb6a637.png)
 
 <br>
 
