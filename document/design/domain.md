@@ -43,7 +43,7 @@
   | 관련 태그          | RelatedTags     |
   | 작성 날짜/시간     | CreatedDateTime |
   | 댓글들             | Comments        |
-  | 좋아요를 준 회원들 | LikedUsers      |
+  | 좋아요를 준 회원들 | membersWhoLike  |
 
   <br>
 
@@ -54,9 +54,11 @@
   | 댓글               | Comment             |
   | 댓글 단 코드 번호  | CommentedCodeNumber |
   | 작성자             | Writer              |
+  | 댓글이 작성된 피드 | WrittenFeed         |
+  | 답글이 달린 댓글   | Replied             |
   | 답글들             | Replies             |
   | 작성 내용          | Content             |
-  | 좋아요를 준 회원들 | LikedUsers          |
+  | 좋아요를 준 회원들 | MembersWhoLike      |
   | 작성 날짜/시간     | CreatedDateTime     |
 
   <br>
@@ -73,9 +75,10 @@
 
 ### 다이어그램
 
-![image](https://user-images.githubusercontent.com/43431081/92700228-8b381900-f389-11ea-9466-c25d9eb6a637.png)
+![image](https://user-images.githubusercontent.com/43431081/92711137-4e711f80-f393-11ea-8712-156af6146467.png)
 
 <br>
 
 ## 테이블
 
+![image](https://user-images.githubusercontent.com/43431081/92711751-c50e1d00-f393-11ea-8f63-aa11bf109936.png)
