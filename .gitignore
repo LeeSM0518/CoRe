@@ -297,3 +297,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/git,macos,windows,intellij,intellij+all,intellij+iml,visualstudiocode
+[\~]*.pptx
