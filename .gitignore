@@ -298,3 +298,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/git,macos,windows,intellij,intellij+all,intellij+iml,visualstudiocode
 [\~]*.pptx
+core-api/src/main/resources/application-dev.yml
