@@ -1,6 +1,6 @@
 package io.wisoft.core.root.repository;
 
-import io.wisoft.core.root.domain.Member;
+import io.wisoft.core.root.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
