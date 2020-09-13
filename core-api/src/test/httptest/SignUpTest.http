@@ -1,0 +1,16 @@
+POST http://localhost:8888/api/accounts/signup/email
+Content-Type: application/json
+
+{
+  "email": "nalsm0518@gmail."
+}
+
+###
+
+POST http://localhost:8888/api/accounts/signup/code
+Content-Type: application/json
+
+{
+  "email": "nalsm0518@gmail.",
+  "code": ""
+}
