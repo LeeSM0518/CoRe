@@ -1,0 +1,4 @@
+GET http://localhost:8888/api/item?id=99
+Accept: application/json
+
+###

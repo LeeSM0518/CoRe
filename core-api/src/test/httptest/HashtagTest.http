@@ -1,0 +1,8 @@
+POST http://localhost:8888/api/hashtags
+Content-Type: application/json
+
+{
+  "name": "java"
+}
+
+###

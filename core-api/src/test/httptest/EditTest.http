@@ -1,0 +1,10 @@
+PUT http://localhost:8888/api/accounts/edit/password
+Content-Type: application/json
+
+{
+  "beforePassword": "1234",
+  "newPassword": "1234",
+  "checkNewPassword": "1234"
+}
+
+###
