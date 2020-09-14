@@ -5,9 +5,9 @@
 - [x] **POST /api/accounts/signup** : 회원가입
   - [x] **POST /api/accounts/signup/email** : 이메일 인증코드 전송 요청
   - [x] **POST /api/accounts/signup/code** : 이메일 인증코드 인증 요청
-- [ ] **POST /api/accounts/edit/photo** : 프로필 사진 업로드(수정)
-- [ ] **DELETE /api/accounts/edit/photo** : 프로필 사진 삭제
-- [ ] **PUT /api/accounts/edit/profile** : 프로필 수정(이름, 웹사이트, 소개, 이메일 공개 여부)
+- [x] **POST /api/accounts/edit/photo** : 프로필 사진 업로드
+- [x] **DELETE /api/accounts/edit/photo** : 프로필 사진 삭제
+- [x] **PUT /api/accounts/edit/profile** : 프로필 수정(이름, 웹사이트, 소개, 이메일 공개 여부)
 - [x] **PUT /api/accounts/edit/password** : 비밀번호 수정
 - [ ] **POST /api/feeds** : 피드 생성
 - [ ] **GET /api/feeds/{feedId}** : 해당 피드 조회
@@ -144,6 +144,50 @@
   * `400` : 이메일 형식 에러, 코드 형식 에러
   * `401` : 인증 코드 비일치
   * `404` : 인증 코드를 찾을 수 없음
+
+<br>
+
+## POST /api/accounts/edit/photo
+
+프로필 사진 업로드
+
+* **request**
+  * **name:** photo
+  * **value** : `MultipartFile`
+* **response**
+  * `200` : 성공
+
+<br>
+
+## DELETE /api/accounts/edit/photo
+프로필 사진 삭제
+
+* **request**
+* **response**
+  * `200` : 성공
+
+<br>
+
+## PUT /api/accounts/edit/profile
+
+프로필 수정(이름, 웹사이트, 소개, 이메일 공개 여부)
+
+* **request**
+
+  ```javascript
+  {
+    "name": "String",
+    "website": "String",
+    "introduction": "String",
+    "isPublicEmail": Boolean
+  }
+  ```
+
+* **response**
+
+  * `200` : 성공
+  * `400` : 이름이나 이메일 공개 여부 형식 에러
+  * `409` : 이름이 이미 존재
 
 <br>
 

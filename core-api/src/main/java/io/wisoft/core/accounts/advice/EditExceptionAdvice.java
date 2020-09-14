@@ -1,6 +1,7 @@
 package io.wisoft.core.accounts.advice;
 
 import io.wisoft.core.accounts.exception.BeforePasswordNotEqualException;
+import io.wisoft.core.accounts.exception.MultipartNotFoundException;
 import io.wisoft.core.accounts.exception.NewPasswordNotEqualException;
 import io.wisoft.core.accounts.exception.UncertifiedMemberException;
 import io.wisoft.core.root.advice.ErrorResponse;
@@ -31,6 +32,13 @@ public class EditExceptionAdvice {
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)
         .body(new ErrorResponse("새 비밀번호와 새 비밀번호 확인이 서로 다릅니다."));
+  }
+
+  @ExceptionHandler(MultipartNotFoundException.class)
+  public ResponseEntity<ErrorResponse> multipartNotFound() {
+    return ResponseEntity
+        .status(HttpStatus.BAD_REQUEST)
+        .body(new ErrorResponse("프로필 사진을 찾을 수 없습니다."));
   }
 
 }
