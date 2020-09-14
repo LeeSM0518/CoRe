@@ -14,20 +14,22 @@
 
   | 한글               | 영어            |
   | ------------------ | --------------- |
-  | 회원               | Member          |
-  | 이름               | Name            |
-  | 사진               | Photo           |
-  | 이메일             | Email           |
-  | 비밀번호           | Password        |
-  | 관심사             | Interests       |
-  | 팔로우             | Following       |
-  | 팔로워             | Followers       |
-  | 한줄 소개          | Introduction    |
-  | 총 받은 좋아요 수  | CountOfLikes    |
-  | 작성한 피드들      | WrittenFeeds    |
-  | 작성한 댓글들      | WrittenComments |
-  | 좋아요를 준 피드들 | LikedFeeds      |
-  | 좋아요를 준 댓글들 | LikedComments   |
+  | 회원               | member          |
+  | 이름               | name            |
+  | 사진               | photo           |
+  | 이메일             | email           |
+  | 이메일 공개 여부   | isPublicEmail   |
+  | 비밀번호           | password        |
+  | 관심사             | interests       |
+  | 팔로우             | following       |
+  | 팔로워             | followers       |
+  | 한줄 소개          | introduction    |
+  | 총 받은 좋아요 수  | countOfLikes    |
+  | 웹사이트           | website         |
+  | 작성한 피드들      | writtenFeeds    |
+  | 작성한 댓글들      | writtenComments |
+  | 좋아요를 준 피드들 | likedFeeds      |
+  | 좋아요를 준 댓글들 | likedComments   |
 
   <br>
 
@@ -35,14 +37,14 @@
 
   | 한글               | 영어            |
   | ------------------ | --------------- |
-  | 피드               | Feed            |
-  | 작성자             | Writer          |
-  | 요약               | Summary         |
-  | 메인 코드 블록     | MainCode        |
-  | 내용               | Content         |
-  | 관련 태그          | RelatedTags     |
-  | 작성 날짜/시간     | CreatedDateTime |
-  | 댓글들             | Comments        |
+  | 피드               | feed            |
+  | 작성자             | writer          |
+  | 요약               | summary         |
+  | 메인 코드 블록     | mainCode        |
+  | 내용               | content         |
+  | 관련 태그          | relatedTags     |
+  | 작성 날짜/시간     | createdDateTime |
+  | 댓글들             | comments        |
   | 좋아요를 준 회원들 | membersWhoLike  |
 
   <br>
@@ -51,15 +53,15 @@
 
   | 한글               | 영어                |
   | ------------------ | ------------------- |
-  | 댓글               | Comment             |
-  | 댓글 단 코드 번호  | CommentedCodeNumber |
-  | 작성자             | Writer              |
-  | 댓글이 작성된 피드 | WrittenFeed         |
-  | 답글이 달린 댓글   | Replied             |
-  | 답글들             | Replies             |
-  | 작성 내용          | Content             |
-  | 좋아요를 준 회원들 | MembersWhoLike      |
-  | 작성 날짜/시간     | CreatedDateTime     |
+  | 댓글               | comment             |
+  | 댓글 단 코드 번호  | commentedCodeNumber |
+  | 작성자             | writer              |
+  | 댓글이 작성된 피드 | writtenFeed         |
+  | 답글이 달린 댓글   | replied             |
+  | 답글들             | replies             |
+  | 작성 내용          | content             |
+  | 좋아요를 준 회원들 | membersWhoLike      |
+  | 작성 날짜/시간     | createdDateTime     |
 
   <br>
 
@@ -67,18 +69,18 @@
 
   | 한글      | 영어          |
   | --------- | ------------- |
-  | 해시 태그 | Hashtag       |
-  | 이름      | Name          |
-  | 태깅 수   | CountOfTagged |
+  | 해시 태그 | hashtag       |
+  | 이름      | name          |
+  | 태깅 수   | countOfTagged |
 
 <br>
 
 ### 다이어그램
 
-![image](https://user-images.githubusercontent.com/43431081/92711137-4e711f80-f393-11ea-8712-156af6146467.png)
+![image](https://user-images.githubusercontent.com/43431081/93078465-7929e380-f6c5-11ea-8521-b44fd27eeae5.png)
 
 <br>
 
 ## 테이블
 
-![image](https://user-images.githubusercontent.com/43431081/92711751-c50e1d00-f393-11ea-8f63-aa11bf109936.png)
+![image](https://user-images.githubusercontent.com/43431081/93078389-5ac3e800-f6c5-11ea-894f-89ad81e5f140.png)
