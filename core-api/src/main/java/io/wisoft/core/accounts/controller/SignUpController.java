@@ -33,8 +33,8 @@ public class SignUpController {
   }
 
   @PostMapping("/signup")
-  public void signUp(@Valid @RequestBody RequestToSignUp dto) {
-    signUpService.signUp(dto.getEmail(), dto.getName(), dto.getPassword(), dto.getInterests());
+  public void signUp(@Valid @RequestBody RequestToSignUp dto, HttpSession session) {
+    signUpService.signUp(session, dto.getEmail(), dto.getName(), dto.getPassword(), dto.getInterests());
   }
 
 }
