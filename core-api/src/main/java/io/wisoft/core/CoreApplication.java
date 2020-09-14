@@ -1,5 +1,6 @@
 package io.wisoft.core;
 
+import io.wisoft.core.utils.FileManagementUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CoreApplication {
 
   public static void main(String[] args) {
+    FileManagementUtil.directorySetting();
     SpringApplication.run(CoreApplication.class, args);
   }
 

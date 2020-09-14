@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -18,7 +19,7 @@ public class RequestToChangeProfile {
   private String name;
   private String website;
   private String introduction;
-  @NotBlank(message = "이메일 공개 여부를 반드시 선택해주세요.")
+  @NotNull(message = "이메일 공개 여부를 반드시 입력해주세요.")
   private Boolean isPublicEmail;
 
 }

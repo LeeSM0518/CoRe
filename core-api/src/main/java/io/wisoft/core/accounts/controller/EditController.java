@@ -1,12 +1,11 @@
 package io.wisoft.core.accounts.controller;
 
 import io.wisoft.core.accounts.dto.RequestToChangePassword;
+import io.wisoft.core.accounts.dto.RequestToChangeProfile;
 import io.wisoft.core.accounts.service.EditService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +22,21 @@ public class EditController {
   public void changePassword(HttpServletRequest request, HttpServletResponse response,
                              @RequestBody @Valid RequestToChangePassword dto) {
     editService.changePassword(request, response, dto);
+  }
+
+  @PutMapping("/profile")
+  public void changeProfile(@RequestBody @Valid RequestToChangeProfile dto) {
+    editService.changeProfile(dto);
+  }
+
+  @PostMapping("/photo")
+  public void uploadPhoto(@RequestParam("photo") MultipartFile file) throws Exception {
+    editService.uploadPhoto(file);
+  }
+
+  @DeleteMapping("/photo")
+  public void deletePhoto() {
+    editService.deletePhoto();
   }
 
 }

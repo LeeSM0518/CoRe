@@ -30,7 +30,7 @@ public class Member implements Serializable {
 
   private String email;
 
-  private boolean isPublicEmail = false;
+  private Boolean isPublicEmail = false;
 
   private String password;
 
@@ -42,8 +42,8 @@ public class Member implements Serializable {
 
   @ManyToMany
   @JoinTable(name = "member_interests",
-  joinColumns = @JoinColumn(name = "member_id"),
-  inverseJoinColumns = @JoinColumn(name = "hashtag_id"))
+      joinColumns = @JoinColumn(name = "member_id"),
+      inverseJoinColumns = @JoinColumn(name = "hashtag_id"))
   private List<Hashtag> interests = new ArrayList<>();
 
   @ManyToMany
@@ -75,6 +75,17 @@ public class Member implements Serializable {
 
   public void changePassword(String password) {
     this.password = password;
+  }
+
+  public void changeProfile(String name, String website, String introduction, Boolean isPublicEmail) {
+    this.name = name;
+    this.website = website;
+    this.introduction = introduction;
+    this.isPublicEmail = isPublicEmail;
+  }
+
+  public void changePhoto(String filePath) {
+    photo = filePath;
   }
 
 }
