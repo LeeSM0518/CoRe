@@ -1,8 +1,8 @@
 package io.wisoft.core.accounts.service.impl;
 
-import io.wisoft.core.accounts.exception.DuplicateEmailException;
-import io.wisoft.core.accounts.exception.NotEqualCodeException;
-import io.wisoft.core.accounts.exception.NotFoundEmailInSessionException;
+import io.wisoft.core.accounts.exception.EmailDuplicateException;
+import io.wisoft.core.accounts.exception.CodeNotEqualException;
+import io.wisoft.core.accounts.exception.EmailInSessionNotFoundException;
 import io.wisoft.core.accounts.service.EmailAuthenticationService;
 import io.wisoft.core.root.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.Random;
@@ -18,6 +19,7 @@ import java.util.Random;
 @Service
 @Profile("dev")
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class EmailAuthenticationServiceImpl implements EmailAuthenticationService {
 
   private final MemberRepository memberRepository;
@@ -28,8 +30,8 @@ public class EmailAuthenticationServiceImpl implements EmailAuthenticationServic
   @Override
   public void requestAuthenticateEmail(HttpSession session, String email) {
     if (memberRepository.findByEmail(email) != null)
-      throw new DuplicateEmailException();
-    int code = getRandomCode();
+      throw new EmailDuplicateException();
+    String code = String.valueOf(getRandomCode());
     sendAuthenticateEmail(email, code);
     session.setMaxInactiveInterval(60);
     session.setAttribute(email, code);
@@ -37,14 +39,18 @@ public class EmailAuthenticationServiceImpl implements EmailAuthenticationServic
 
   @Override
   public void requestAuthenticateCode(HttpSession session, String email, String code) {
-    Integer codeInSession = (Integer) session.getAttribute(email);
+    String codeInSession = (String) session.getAttribute(email);
     if (codeInSession == null)
-      throw new NotFoundEmailInSessionException();
-    else if (!Integer.valueOf(code).equals(codeInSession))
-      throw new NotEqualCodeException();
+      throw new EmailInSessionNotFoundException();
+    else if (!code.equals(codeInSession))
+      throw new CodeNotEqualException();
+    else {
+      session.setAttribute(email, EMAIL_CERTIFIED);
+      session.setMaxInactiveInterval(60 * 5);
+    }
   }
 
-  private void sendAuthenticateEmail(String email, int code) {
+  private void sendAuthenticateEmail(String email, String code) {
     SimpleMailMessage message = new SimpleMailMessage();
     message.setTo(email);
     message.setFrom(FROM_ADDRESS);
