@@ -2,7 +2,7 @@ POST http://localhost:8888/api/accounts/signup/email
 Content-Type: application/json
 
 {
-  "email": "nalsm0518@gmail."
+  "email": "nalsm0518@gmail.com"
 }
 
 ###
@@ -11,6 +11,53 @@ POST http://localhost:8888/api/accounts/signup/code
 Content-Type: application/json
 
 {
-  "email": "nalsm0518@gmail.",
-  "code": ""
+  "email": "nalsm0518@gmail.com",
+  "code": "708654"
+}
+
+###
+
+POST http://localhost:8888/api/accounts/signup
+Content-Type: application/json
+
+{
+  "email": "nalsm0518@gmail.com",
+  "name": "min",
+  "password": "1234",
+  "interests": [
+    "java"
+  ]
+}
+
+###
+
+POST http://localhost:8888/api/accounts/signup/email
+Content-Type: application/json
+
+{
+  "email": "nalsm98@naver.com"
+}
+
+###
+
+POST http://localhost:8888/api/accounts/signup/code
+Content-Type: application/json
+
+{
+  "email": "nalsm98@naver.com",
+  "code": "993351"
+}
+
+###
+
+POST http://localhost:8888/api/accounts/signup
+Content-Type: application/json
+
+{
+  "email": "nalsm98@naver.com",
+  "name": "min2",
+  "password": "1234",
+  "interests": [
+    "c"
+  ]
 }

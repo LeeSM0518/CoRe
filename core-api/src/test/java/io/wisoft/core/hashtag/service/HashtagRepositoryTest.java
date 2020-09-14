@@ -1,4 +1,4 @@
-package io.wisoft.core.tags.service;
+package io.wisoft.core.hashtag.service;
 
 import io.wisoft.core.root.entity.Hashtag;
 import io.wisoft.core.root.repository.HashtagRepository;

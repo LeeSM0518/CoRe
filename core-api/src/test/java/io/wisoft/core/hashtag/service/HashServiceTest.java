@@ -1,8 +1,8 @@
-package io.wisoft.core.tags.service;
+package io.wisoft.core.hashtag.service;
 
 import io.wisoft.core.root.entity.Hashtag;
 import io.wisoft.core.root.repository.HashtagRepository;
-import io.wisoft.core.tags.exception.DuplicateHashtagException;
+import io.wisoft.core.hashtag.exception.HashtagDuplicateException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,7 +36,7 @@ public class HashServiceTest {
     Assert.assertEquals(hashtag.getName(), "java2");
   }
 
-  @Test(expected = DuplicateHashtagException.class)
+  @Test(expected = HashtagDuplicateException.class)
   public void 해시태그_중복생성_예외() throws Exception {
     // given
     // when
