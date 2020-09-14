@@ -1,4 +1,4 @@
-package io.wisoft.core.tags.service;
+package io.wisoft.core.hashtag.service;
 
 public interface HashtagService {
 
