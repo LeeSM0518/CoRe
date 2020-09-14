@@ -3,6 +3,7 @@ package io.wisoft.core.root.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
         columnNames = {"name", "email"}
     )
 })
-public class Member {
+public class Member implements Serializable {
 
   @Id
   @GeneratedValue
@@ -29,11 +30,15 @@ public class Member {
 
   private String email;
 
+  private boolean isPublicEmail = false;
+
   private String password;
 
   private String introduction;
 
   private Long countOfLikes = 0L;
+
+  private String website;
 
   @ManyToMany
   @JoinTable(name = "member_interests",
@@ -66,6 +71,10 @@ public class Member {
     member.setPassword(password);
     member.setInterests(interests);
     return member;
+  }
+
+  public void changePassword(String password) {
+    this.password = password;
   }
 
 }
