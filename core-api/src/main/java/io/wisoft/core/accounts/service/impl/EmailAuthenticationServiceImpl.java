@@ -1,13 +1,12 @@
 package io.wisoft.core.accounts.service.impl;
 
-import io.wisoft.core.accounts.exception.EmailDuplicateException;
 import io.wisoft.core.accounts.exception.CodeNotEqualException;
+import io.wisoft.core.accounts.exception.EmailDuplicateException;
 import io.wisoft.core.accounts.exception.EmailInSessionNotFoundException;
 import io.wisoft.core.accounts.service.EmailAuthenticationService;
 import io.wisoft.core.root.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.util.Random;
 
 @Service
-@Profile("dev")
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class EmailAuthenticationServiceImpl implements EmailAuthenticationService {
