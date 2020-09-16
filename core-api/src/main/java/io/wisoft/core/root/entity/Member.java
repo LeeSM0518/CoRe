@@ -11,7 +11,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
 @Table(uniqueConstraints = {
     @UniqueConstraint(
         columnNames = {"name", "email"}

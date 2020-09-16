@@ -1,6 +1,8 @@
 package io.wisoft.core.root.entity;
 
 import lombok.*;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,6 +35,10 @@ public class Hashtag implements Serializable {
 
   public void tagged() {
     this.countOfTagged++;
+  }
+
+  public static PageRequest getRequestPageFoundByName() {
+    return PageRequest.of(0, 10, Sort.Direction.ASC, "name");
   }
 
 }
