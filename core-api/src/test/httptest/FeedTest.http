@@ -1,0 +1,111 @@
+POST http://localhost:8888/api/accounts/login
+Content-Type: application/json
+
+{
+  "email": "nalsm0518@gmail.com",
+  "password": "1234"
+}
+
+###
+POST http://localhost:8888/api/feeds
+Content-Type: application/json
+
+{
+  "summary": "주제11(요약)",
+  "mainCode": "메인 코드 블록",
+  "content": "내용",
+  "relatedTags": [
+    "java"
+  ]
+}
+
+###
+POST http://localhost:8888/api/feeds
+Content-Type: application/json
+
+{
+  "summary": "주제22(요약)",
+  "mainCode": "메인 코드 블록",
+  "content": "내용",
+  "relatedTags": [
+    "java", "spring"
+  ]
+}
+
+###
+POST http://localhost:8888/api/feeds
+Content-Type: application/json
+
+{
+  "summary": "주제33(요약)",
+  "mainCode": "메인 코드 블록",
+  "content": "내용",
+  "relatedTags": [
+    "kotlin"
+  ]
+}
+
+###
+POST http://localhost:8888/api/feeds
+Content-Type: application/json
+
+{
+  "summary": "",
+  "mainCode": "메인 코드 블록",
+  "content": "내용",
+  "relatedTags": [
+    "java"
+  ]
+}
+
+###
+POST http://localhost:8888/api/feeds
+Content-Type: application/json
+
+{
+  "summary": "주제(요약)",
+  "mainCode": "",
+  "content": "내용",
+  "relatedTags": [
+    "java"
+  ]
+}
+
+###
+POST http://localhost:8888/api/feeds
+Content-Type: application/json
+
+{
+  "summary": "주제(요약)",
+  "mainCode": "메인 코드 블록",
+  "content": "",
+  "relatedTags": [
+    "java"
+  ]
+}
+
+###
+POST http://localhost:8888/api/feeds
+Content-Type: application/json
+
+{
+  "summary": "주제(요약)",
+  "mainCode": "메인 코드 블록",
+  "content": "내용",
+  "relatedTags": []
+}
+
+###
+POST http://localhost:8888/api/feeㅏds
+Content-Type: application/json
+
+{
+  "summary": "주제(요약)",
+  "mainCode": "메인 코드 블록",
+  "content": "내용",
+  "relatedTags": ["as"]
+}
+
+###
+GET http://localhost:8888/api/feeds?page=0
+Accept: application/json
