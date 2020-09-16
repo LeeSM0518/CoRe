@@ -1,13 +1,13 @@
-//package io.wisoft.core;
-//
-//import org.junit.jupiter.api.Test;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//@SpringBootTest
-//class CoreApplicationTests {
-//
-//  @Test
-//  void contextLoads() {
-//  }
-//
-//}
+package io.wisoft.core;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class CoreApplicationTests {
+
+  @Test
+  void contextLoads() {
+  }
+
+}
