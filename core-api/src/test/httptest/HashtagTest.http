@@ -1,8 +1,45 @@
+POST http://localhost:8888/api/accounts/login
+Content-Type: application/json
+
+{
+  "email": "nalsm0518@gmail.com",
+  "password": "1234"
+}
+
+###
+
 POST http://localhost:8888/api/hashtags
 Content-Type: application/json
 
 {
   "name": "java"
+}
+
+###
+
+POST http://localhost:8888/api/hashtags
+Content-Type: application/json
+
+{
+  "name": "spring"
+}
+
+###
+
+POST http://localhost:8888/api/hashtags
+Content-Type: application/json
+
+{
+  "name": "kotlin"
+}
+
+###
+
+POST http://localhost:8888/api/hashtags
+Content-Type: application/json
+
+{
+  "name": "springboot"
 }
 
 ###
