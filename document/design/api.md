@@ -5,6 +5,8 @@
 - [x] **POST /api/accounts/signup** : 회원가입
   - [x] **POST /api/accounts/signup/email** : 이메일 인증코드 전송 요청
   - [x] **POST /api/accounts/signup/code** : 이메일 인증코드 인증 요청
+- [ ] **GET /api/accounts/password/reset** : 패스워드 랜덤 변경 코드 요청
+- [ ] **POST /api/accounts/password/reset** : 패스워드 랜덤 변경 요청
 - [x] **POST /api/accounts/edit/photo** : 프로필 사진 업로드
 - [x] **DELETE /api/accounts/edit/photo** : 프로필 사진 삭제
 - [x] **PUT /api/accounts/edit/profile** : 프로필 수정(이름, 웹사이트, 소개, 이메일 공개 여부)
