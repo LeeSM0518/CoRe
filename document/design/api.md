@@ -9,7 +9,8 @@
 - [x] **DELETE /api/accounts/edit/photo** : 프로필 사진 삭제
 - [x] **PUT /api/accounts/edit/profile** : 프로필 수정(이름, 웹사이트, 소개, 이메일 공개 여부)
 - [x] **PUT /api/accounts/edit/password** : 비밀번호 수정
-- [ ] **POST /api/feeds** : 피드 생성
+- [x] **GET /api/feeds?page={page}** : 피드 조회
+- [x] **POST /api/feeds** : 피드 생성
 - [ ] **GET /api/feeds/{feedId}** : 해당 피드 조회
 - [ ] **DELETE /api/feeds/{feedId}** : 해당 피드 삭제
 - [ ] **PUT /api/feeds/{feedId}** : 해당 피드 수정
@@ -29,6 +30,7 @@
 - [ ] **DELETE /api/members/{memberName}/comments/{commentId}/like** : 해당 회원이 해당 댓글의 좋아요 삭제
 - [ ] **GET /api/feeds** : 최근에 올라온 순으로 피드들 조회
 - [x] **POST /api/hashtags** : 해시태그 생성
+- [x] **GET /api/hashtags?name={name}** : 해시태그 검색
 - [ ] **GET /api/hashtags/{tagName}/feeds** : 해당 태그의 게시물 조회
 
 <br>
@@ -57,7 +59,7 @@
       ```javascript
       {
         "name": "string",  // 이름(별명)
-        "photo": "string"  // 사진(프로필사진)
+        "photo": "string"  // 사진(프로필사진 경로)
       }
       ```
 
@@ -213,6 +215,71 @@
 
 <br>
 
+## GET /api/feeds?page={page}
+
+피드 조회
+
+* **request**
+
+  * `page` : Int, 페이지 번호
+
+* **response**
+
+  * `200` : 성공
+
+    ```javascript
+    [
+      {
+        "id": 5,                    // 피드 번호
+        "summary": "주제11(요약)",    // 요약(제목)
+        "mainCode": "메인 코드 블록",  // 메인 코드 블록
+        "content": "내용",           // 내용
+        "createdDateTime": "2020-09-16T15:56:00.739626", // 피드 생성 날짜
+        "relatedTags": [        // 관련 태그
+          "java"
+        ],
+        "writer": {             // 작성자
+          "name": "min",        // 이름
+          "photo": null         // 사진 경로
+        },
+        "countOfComments": 0,   // 댓글 수
+        "membersWhoLike": [     // 좋아요 누른 회원
+          {
+            "name": "이름",      // 이름
+            "photo": "사진"      // 사진 경로
+          }
+        ]    
+      }
+    ]
+    ```
+
+<br>
+
+## POST /api/feeds
+
+피드 생성
+
+* **request**
+
+  ```javascript
+  {
+    "summary": "String",   // 요약(주제)
+    "mainCode": "String",  // 메인 코드 블록
+    "content": "String",   // 내용
+    "relatedTags": [       // 관련 주제(해시 태그)
+      "String"
+    ]
+  }
+  ```
+
+* **response**
+
+  * `200` : 성공
+  * `400` : 데이터 형식 에러
+  * `404` : 해당 관련 주제를 찾을 수 없음
+
+<br>
+
 ## POST /api/hashtags
 
 해시태그 생성
@@ -229,3 +296,29 @@
 
   * `200` : 성공
   * `409` : 해시태그가 이미 존재
+
+<br>
+
+## GET /api/hashtags?name={name}
+
+해시태그 검색
+
+* **request**
+
+  * `name` : String, 이름
+
+* **response**
+
+  * `200` : 성공
+
+    ```javascript
+    [
+      {
+        "name": "java",      // 이름
+        "countOfTagged": 1   // 태그된 횟수
+      }
+    ]
+    ```
+
+  * `400` : 이름의 형식이 잘못되어 있음
+
