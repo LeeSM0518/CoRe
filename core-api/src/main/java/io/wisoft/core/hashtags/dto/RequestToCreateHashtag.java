@@ -1,4 +1,4 @@
-package io.wisoft.core.hashtag.dto;
+package io.wisoft.core.hashtags.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
