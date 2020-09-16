@@ -83,4 +83,4 @@
 
 ## 테이블
 
-![image](https://user-images.githubusercontent.com/43431081/93078389-5ac3e800-f6c5-11ea-894f-89ad81e5f140.png)
+![image](https://user-images.githubusercontent.com/43431081/93302203-903b1380-f834-11ea-98c4-9dd5d02595cd.png)
