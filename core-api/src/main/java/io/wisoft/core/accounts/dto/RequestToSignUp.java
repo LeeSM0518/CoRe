@@ -23,7 +23,7 @@ public class RequestToSignUp {
   private String name;
   @NotBlank(message = "비밀번호를 반드시 입력해주세요. 공백은 입력 불가합니다.")
   private String password;
-  @NotEmpty(message = "관심사를 최소한 한 개 선택해야 합니다.")
+  @NotEmpty(message = "관심사를 최소 한 개를 선택해야 합니다.")
   private List<String> interests;
 
 }

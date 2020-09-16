@@ -1,5 +1,6 @@
-package io.wisoft.core.accounts.security;
+package io.wisoft.core.accounts.config;
 
+import io.wisoft.core.accounts.security.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
