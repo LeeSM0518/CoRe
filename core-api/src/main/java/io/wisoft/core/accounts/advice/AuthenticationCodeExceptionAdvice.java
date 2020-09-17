@@ -16,14 +16,14 @@ public class AuthenticationCodeExceptionAdvice {
   public ResponseEntity<ErrorResponse> notFoundEmailInSession() {
     return ResponseEntity
         .status(HttpStatus.NOT_FOUND)
-        .body(new ErrorResponse("인증 코드가 존재하지 않습니다. 인증 코드를 재요청해 주시길 바랍니다."));
+        .body(new ErrorResponse("인증 코드가 존재하지 않습니다."));
   }
 
   @ExceptionHandler(CodeNotEqualException.class)
   public ResponseEntity<ErrorResponse> notEqualCode() {
     return ResponseEntity
         .status(HttpStatus.UNAUTHORIZED)
-        .body(new ErrorResponse("인증 코드가 일치하지 않습니다. 인증 코드를 재확인해 주시길 바랍니다."));
+        .body(new ErrorResponse("인증 코드가 일치하지 않습니다."));
   }
 
   @ExceptionHandler(NumberFormatException.class)
