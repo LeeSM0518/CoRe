@@ -1,6 +1,7 @@
 package io.wisoft.core.hashtags.advice;
 
 import io.wisoft.core.hashtags.exception.HashtagDuplicateException;
+import io.wisoft.core.hashtags.exception.HashtagNameContainsSpecialCharException;
 import io.wisoft.core.hashtags.exception.HashtagNameContainsWhiteSpaceException;
 import io.wisoft.core.root.advice.ErrorResponse;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,14 @@ public class HashtagExceptionAdvice {
   public ResponseEntity<ErrorResponse> hashtagNameContainsWhiteSpace() {
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)
-        .body(new ErrorResponse("이름에 공백은 기입할 수 없습니다."));
+        .body(new ErrorResponse("태그에 공백은 기입할 수 없습니다."));
+  }
+
+  @ExceptionHandler(HashtagNameContainsSpecialCharException.class)
+  public ResponseEntity<ErrorResponse> hashtagNameContainsSpecialChar() {
+    return ResponseEntity
+        .status(HttpStatus.BAD_REQUEST)
+        .body(new ErrorResponse("태그에 특수문자를 기입할 수 없습니다."));
   }
 
 }

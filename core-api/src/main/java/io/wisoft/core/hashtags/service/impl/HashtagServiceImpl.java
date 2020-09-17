@@ -2,7 +2,9 @@ package io.wisoft.core.hashtags.service.impl;
 
 import io.wisoft.core.hashtags.dto.ResponseToFindHashtag;
 import io.wisoft.core.hashtags.exception.HashtagDuplicateException;
+import io.wisoft.core.hashtags.exception.HashtagNameContainsSpecialCharException;
 import io.wisoft.core.hashtags.exception.HashtagNameContainsWhiteSpaceException;
+import io.wisoft.core.hashtags.exception.HashtagNameIsNullException;
 import io.wisoft.core.hashtags.service.HashtagService;
 import io.wisoft.core.root.entity.Hashtag;
 import io.wisoft.core.root.repository.HashtagRepository;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static io.wisoft.core.root.entity.Hashtag.getRequestPageFoundByName;
@@ -38,8 +41,15 @@ public class HashtagServiceImpl implements HashtagService {
 
   @Transactional(readOnly = true)
   public List<ResponseToFindHashtag> findHashtagListByName(String name) {
+    if (StringUtils.isEmpty(name))
+      throw new HashtagNameIsNullException();
+
     if (StringUtils.containsWhitespace(name))
       throw new HashtagNameContainsWhiteSpaceException();
+
+    Pattern pattern = Pattern.compile("[!@#$%^&*(),.?\":{}|<>]");
+    if (pattern.matcher(name).find())
+      throw new HashtagNameContainsSpecialCharException();
 
     Page<Hashtag> byNameStartsWith =
         hashtagRepository.findByNameStartsWith(name, getRequestPageFoundByName());
