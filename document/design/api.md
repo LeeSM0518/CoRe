@@ -94,7 +94,7 @@
     "email": "string",    // 이메일
     "name": "string",     // 이름(별명)
     "password": "string"  // 비밀번호
-    "interest": [         // 관심사 리스트(해시태그 리스트)
+    "interests": [         // 관심사 리스트(해시태그 리스트)
     	"string"
     ]
   }
