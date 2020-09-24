@@ -5,12 +5,14 @@
 - [x] **POST /api/accounts/signup** : 회원가입
   - [x] **POST /api/accounts/signup/email** : 이메일 인증코드 전송 요청
   - [x] **POST /api/accounts/signup/code** : 이메일 인증코드 인증 요청
-- [ ] **GET /api/accounts/password/reset** : 패스워드 랜덤 변경 코드 요청
-- [ ] **POST /api/accounts/password/reset** : 패스워드 랜덤 변경 요청
+- [x] **POST /api/accounts/password/email** : 비밀번호 랜덤 변경 코드 요청
+- [x] **POST /api/accounts/password/reset** : 비밀번호 랜덤 변경 인증 및 변경 요청
+- [ ] **DELETE /api/accounts** : 회원 삭제
 - [x] **POST /api/accounts/edit/photo** : 프로필 사진 업로드
 - [x] **DELETE /api/accounts/edit/photo** : 프로필 사진 삭제
 - [x] **PUT /api/accounts/edit/profile** : 프로필 수정(이름, 웹사이트, 소개, 이메일 공개 여부)
 - [x] **PUT /api/accounts/edit/password** : 비밀번호 수정
+- [ ] **PUT /api/accounts/edit/interests** : 관심사 수정
 - [x] **GET /api/feeds?page={page}** : 피드 조회
 - [x] **POST /api/feeds** : 피드 생성
 - [ ] **GET /api/feeds/{feedId}** : 해당 피드 조회
@@ -132,6 +134,48 @@
 ## POST /api/accounts/signup/code
 
 이메일 인증코드 인증 요청
+
+* **request**
+
+  ```javascript
+  {
+    "email": "string",
+    "code": "string"
+  }
+  ```
+
+* **response**
+
+  * `200` : 성공
+  * `400` : 이메일 형식 에러, 코드 형식 에러
+  * `401` : 인증 코드 비일치
+  * `404` : 인증 코드를 찾을 수 없음
+
+<br>
+
+## POST /api/accounts/password/email
+
+비밀번호 랜덤 변경 코드 요청
+
+* **request**
+
+  ```javascript
+  {
+    "email": "string"
+  }
+  ```
+
+* **response**
+
+  * `200` : 성공
+  * `400` : 이메일 형식 에러
+  * `404` : 회원 중에 해당 이메일을 찾을 수 없음
+
+<br>
+
+## POST /api/accounts/password/reset
+
+비밀번호 랜덤 변경 인증 및 변경 요청
 
 * **request**
 
