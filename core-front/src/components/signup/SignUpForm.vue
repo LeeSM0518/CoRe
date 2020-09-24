@@ -68,12 +68,12 @@
       </template>
     </v-form>
     <v-dialog v-model="requestCodeStatus" persistent max-width="600px">
-      <EmailVerification
+      <EmailVerificationToSignUp
         v-if="requestCodeStatus"
         :email="email"
         @close-emailVerification="closeEmailVerification"
         @email-verified="emailVerified"
-      ></EmailVerification>
+      ></EmailVerificationToSignUp>
     </v-dialog>
   </v-col>
 </template>
@@ -81,11 +81,11 @@
 <script>
 import { requestCodeToEmail, requestToSignUp } from '@/api/accounts.js';
 import { getListByName } from '@/api/hashtags.js';
-import EmailVerification from './EmailVerification.vue';
+import EmailVerificationToSignUp from './EmailVerificationToSignUp.vue';
 
 export default {
   components: {
-    EmailVerification,
+    EmailVerificationToSignUp,
   },
 
   data: () => ({
@@ -98,17 +98,17 @@ export default {
     requestCodeMessage: '이메일 인증 코드 받기',
     show: false,
     valid: false,
-    email: '',
     name: '',
     nameRules: [
       v => !!v || '닉네임을 반드시 입력해주세요.',
       v => v.length <= 10 || '닉네임은 10글자 이하만 가능합니다',
     ],
+    code: '',
     codeRules: [
       v => !!v || '인증 코드를 반드시 입력해주세요',
       v => /^[0-9]*$/.test(v) || '인증 코드는 숫자만 가능합니다',
     ],
-    code: '',
+    email: '',
     emailRules: [
       v => !!v || '이메일을 반드시 입력해주세요',
       v => /.+@.+\..+/.test(v) || '이메일 형식에 맞춰서 입력해주세요',
@@ -203,7 +203,6 @@ export default {
       if (result.status === 200) {
         this.$router.push('/login');
       }
-      console.log(result);
     },
   },
 };

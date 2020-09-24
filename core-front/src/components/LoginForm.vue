@@ -17,7 +17,12 @@
         dense
         outlined
       ></v-text-field>
-      <v-btn block color="primary" class="mb-5" :disabled="!valid"
+      <v-btn
+        @click="login"
+        block
+        color="primary"
+        class="mb-5"
+        :disabled="!valid"
         ><b>로그인</b></v-btn
       >
     </v-form>
@@ -25,6 +30,8 @@
 </template>
 
 <script>
+import { requestToLogin } from '@/api/accounts.js';
+
 export default {
   data: () => ({
     show: false,
@@ -40,6 +47,23 @@ export default {
       v => v.length >= 8 || '최소 8 글자 이상 입력해주세요.',
     ],
   }),
+
+  methods: {
+    async login() {
+      const data = {
+        email: this.email,
+        password: this.password,
+      };
+
+      const result = await this.$store.dispatch('CALL_API', () =>
+        requestToLogin(data),
+      );
+      if (result.status === 200) {
+        // TODO 회원 정보 저장
+        this.$router.push('/');
+      }
+    },
+  },
 };
 </script>
 

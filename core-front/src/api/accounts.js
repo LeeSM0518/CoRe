@@ -12,4 +12,13 @@ function requestToSignUp(member) {
   return accounts.post('signup', member);
 }
 
-export { requestCodeToEmail, requestVerificateEmail, requestToSignUp };
+function requestToLogin(member) {
+  return accounts.post('login', member);
+}
+
+export {
+  requestCodeToEmail,
+  requestVerificateEmail,
+  requestToSignUp,
+  requestToLogin,
+};
