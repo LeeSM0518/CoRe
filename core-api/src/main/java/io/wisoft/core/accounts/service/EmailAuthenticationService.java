@@ -6,7 +6,8 @@ public interface EmailAuthenticationService {
 
   String EMAIL_CERTIFIED = "CERTIFIED";
 
-  void requestAuthenticateEmail(HttpSession session, String email);
+  void requestAuthenticateEmailToSignUp(HttpSession session, String email);
+  void requestAuthenticateEmailToPasswordReset(HttpSession session, String email);
   void requestAuthenticateCode(HttpSession session, String email, String code);
 
 }

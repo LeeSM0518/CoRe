@@ -3,9 +3,11 @@ package io.wisoft.core.accounts.advice;
 import io.wisoft.core.accounts.exception.CodeNotEqualException;
 import io.wisoft.core.accounts.exception.EmailInSessionNotFoundException;
 import io.wisoft.core.accounts.exception.EmailNotAuthenticateException;
+import io.wisoft.core.accounts.exception.EmailNotFoundException;
 import io.wisoft.core.root.advice.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSendException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -38,6 +40,20 @@ public class AuthenticationCodeExceptionAdvice {
     return ResponseEntity
         .status(HttpStatus.UNAUTHORIZED)
         .body(new ErrorResponse("인증되지 않은 이메일이거나 인증 시간 초과로 재인증을 받아야 합니다."));
+  }
+
+  @ExceptionHandler(EmailNotFoundException.class)
+  public ResponseEntity<ErrorResponse> emailNotFound() {
+    return ResponseEntity
+        .status(HttpStatus.NOT_FOUND)
+        .body(new ErrorResponse("이메일을 찾을 수 없습니다."));
+  }
+
+  @ExceptionHandler(MailSendException.class)
+  public ResponseEntity<ErrorResponse> mailSend() {
+    return ResponseEntity
+        .status(HttpStatus.REQUEST_TIMEOUT)
+        .body(new ErrorResponse("인증 번호 전송을 실패했습니다. 재요청 해주시길 바랍니다."));
   }
 
 }

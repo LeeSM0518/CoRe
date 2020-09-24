@@ -3,7 +3,6 @@ package io.wisoft.core.accounts.service.impl;
 import io.wisoft.core.accounts.exception.EmailDuplicateException;
 import io.wisoft.core.accounts.exception.EmailNotAuthenticateException;
 import io.wisoft.core.accounts.exception.NameDuplicateException;
-import io.wisoft.core.accounts.exception.InterestNotFoundException;
 import io.wisoft.core.accounts.service.SignUpService;
 import io.wisoft.core.root.entity.Hashtag;
 import io.wisoft.core.root.entity.Member;
@@ -16,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static io.wisoft.core.accounts.service.EmailAuthenticationService.EMAIL_CERTIFIED;
 
@@ -40,14 +40,23 @@ public class SignUpServiceImpl implements SignUpService {
     if (memberRepository.findByName(name) != null)
       throw new NameDuplicateException();
 
-    List<Hashtag> hashtagList = hashtagRepository.findByNames(interests);
-    if (hashtagList == null || hashtagList.size() != interests.size())
-      throw new InterestNotFoundException();
+    List<Hashtag> createdHashtags = interests.stream().map(Hashtag::create).collect(Collectors.toList());
+    List<Hashtag> foundHashtags = hashtagRepository.findByNames(interests);
+
+    List<Hashtag> hashtagList = createdHashtags.stream()
+        .filter(createdTag -> foundHashtags
+            .stream()
+            .noneMatch(foundTag -> createdTag.getName().equals(foundTag.getName())))
+        .collect(Collectors.toList());
 
     hashtagList.forEach(Hashtag::tagged);
-    hashtagRepository.saveAll(hashtagList);
+    foundHashtags.forEach(Hashtag::tagged);
+    if (hashtagList.size() != 0)
+      hashtagRepository.saveAll(hashtagList);
 
-    Member member = Member.create(email, name, passwordEncoder.encode(password), hashtagList);
+    foundHashtags.addAll(hashtagList);
+
+    Member member = Member.create(email, name, passwordEncoder.encode(password), foundHashtags);
     memberRepository.save(member);
   }
 

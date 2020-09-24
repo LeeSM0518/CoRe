@@ -38,6 +38,8 @@ public class FeedServiceImpl implements FeedService {
     Member writer = getMemberWhoRequested();
 
     List<Hashtag> hashtagList = hashtagRepository.findByNames(dto.getRelatedTags());
+
+    // TODO 해시태그를 피드 작성할 때 추가 할 수 있으면 아래 로직 수정
     if (hashtagList == null || hashtagList.size() != dto.getRelatedTags().size())
       throw new RelatedTagsNotFoundException();
 

@@ -24,7 +24,7 @@ public class SignUpController {
 
   @PostMapping("/signup/email")
   public void requestCode(@Valid @RequestBody RequestToAuthenticateEmail dto, HttpSession session) {
-    emailAuthenticationService.requestAuthenticateEmail(session, dto.getEmail());
+    emailAuthenticationService.requestAuthenticateEmailToSignUp(session, dto.getEmail());
   }
 
   @PostMapping("/signup/code")

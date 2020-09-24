@@ -26,7 +26,8 @@ public class AccountsSecurityConfig extends WebSecurityConfigurerAdapter {
   @Value("${spring.security.origin}")
   private String ALLOWED_ORIGIN;
   private static final String[] PERMIT_ADDRESS =
-      {"/api/accounts/login", "/api/accounts/signup", "/api/accounts/signup/**", "/api/hashtags"};
+      {"/api/accounts/login", "/api/accounts/signup", "/api/accounts/signup/**", "/api/hashtags",
+          "/api/accounts/password/**"};
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
