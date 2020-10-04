@@ -84,7 +84,7 @@ public class EditServiceImpl implements EditService {
     }
 
     Member member = memberRepository.findByEmail(loginDto.getEmail());
-    member.changePhoto(filePath);
+    member.changePhoto(username + "." + extension);
     memberRepository.save(member);
   }
 
