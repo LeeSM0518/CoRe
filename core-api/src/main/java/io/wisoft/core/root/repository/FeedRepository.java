@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface FeedRepository extends JpaRepository<Feed, Long> {
 
-  @Query("select f from Feed f join f.relatedTags r where r.name in :hashtags")
+  @Query("select f from Feed f join f.relatedTags r where r.name in :hashtags order by f.createdDateTime desc")
   Page<Feed> findByHashtags(@Param("hashtags") List<String> hashtags, Pageable pageable);
 
 }
