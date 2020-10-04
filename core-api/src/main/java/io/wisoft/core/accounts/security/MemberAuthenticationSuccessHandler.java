@@ -21,7 +21,8 @@ public class MemberAuthenticationSuccessHandler implements AuthenticationSuccess
   public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                       Authentication authentication) throws IOException, ServletException {
     LoginDto loginDto = (LoginDto) authentication.getPrincipal();
-    ResponseToLogin responseToLogin = new ResponseToLogin(loginDto.getName(), loginDto.getPhoto());
+    String username = loginDto.getEmail().split("@")[0];
+    ResponseToLogin responseToLogin = new ResponseToLogin(loginDto.getName(), username);
 
     response.setStatus(HttpStatus.OK.value());
     response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);

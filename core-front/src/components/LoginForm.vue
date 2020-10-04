@@ -31,6 +31,7 @@
 
 <script>
 import { requestToLogin } from '@/api/accounts.js';
+import { saveMemberToCookie } from '@/utils/cookies.js';
 
 export default {
   data: () => ({
@@ -59,7 +60,10 @@ export default {
         requestToLogin(data),
       );
       if (result.status === 200) {
-        // TODO 회원 정보 저장
+        console.log(result);
+        const memberName = result.data.name;
+        this.$store.commit('setMemberName', memberName);
+        saveMemberToCookie(memberName);
         this.$router.push('/');
       }
     },

@@ -39,7 +39,7 @@
           :items="items"
           :search-input.sync="search"
           hide-selected
-          label="관심사를 선택해주세요"
+          label="관심사를 입력해주세요"
           multiple
           :rules="tagRules"
           persistent-hint

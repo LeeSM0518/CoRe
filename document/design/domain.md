@@ -1,5 +1,9 @@
 # 도메인 & 엔티티 & 테이블 설계
 
+- [ ] 다이어그램 & 테이블 업데이트
+
+<br>
+
 ## 도메인
 
 ![image](https://user-images.githubusercontent.com/43431081/92700070-59bf4d80-f389-11ea-9dfc-42a61f2e3714.png)
@@ -39,7 +43,7 @@
   | ------------------ | --------------- |
   | 피드               | feed            |
   | 작성자             | writer          |
-  | 요약               | summary         |
+  | 요약               | title           |
   | 메인 코드 블록     | mainCode        |
   | 내용               | content         |
   | 관련 태그          | relatedTags     |

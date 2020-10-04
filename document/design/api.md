@@ -32,7 +32,6 @@
 - [ ] **DELETE /api/members/{memberName}/feeds/{feedId}/like** : 해당 회원이 해당 피드의 좋아요 삭제
 - [ ] **POST /api/members/{memberName}/comments/{commentId}/like** : 해당 회원이 해당 댓글의 좋아요 생성
 - [ ] **DELETE /api/members/{memberName}/comments/{commentId}/like** : 해당 회원이 해당 댓글의 좋아요 삭제
-- [ ] **GET /api/feeds** : 최근에 올라온 순으로 피드들 조회
 - [x] **POST /api/hashtags** : 해시태그 생성
 - [x] **GET /api/hashtags?name={name}** : 해시태그 검색
 - [ ] **GET /api/hashtags/{tagName}/feeds** : 해당 태그의 게시물 조회
@@ -63,13 +62,12 @@
       ```javascript
       {
         "name": "string",  // 이름(별명)
-        "photo": "string"  // 사진(프로필사진 경로)
       }
       ```
-
-  * `400` : POST 요청이 아닐때, 이메일이나 비밀번호가 비어서 요청되었을 때
-
-  * `401` : 이메일이 존재하지 않을 때, 비밀번호가 일치하지 않을 때
+  
+* `400` : POST 요청이 아닐때, 이메일이나 비밀번호가 비어서 요청되었을 때
+  
+* `401` : 이메일이 존재하지 않을 때, 비밀번호가 일치하지 않을 때
 
 <br>
 
@@ -277,7 +275,7 @@
     [
       {
         "id": 5,                    // 피드 번호
-        "summary": "주제11(요약)",    // 요약(제목)
+        "title": "주제11(제목)",      // 제목
         "mainCode": "메인 코드 블록",  // 메인 코드 블록
         "content": "내용",           // 내용
         "createdDateTime": "2020-09-16T15:56:00.739626", // 피드 생성 날짜
@@ -309,7 +307,7 @@
 
   ```javascript
   {
-    "summary": "String",   // 요약(주제)
+    "title": "String",     // 제목
     "mainCode": "String",  // 메인 코드 블록
     "content": "String",   // 내용
     "relatedTags": [       // 관련 주제(해시 태그)

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { getMemberFromCookie } from '@/utils/cookies.js';
 
 Vue.use(Vuex);
 
@@ -9,6 +10,12 @@ export default new Vuex.Store({
     apiError: false,
     apiErrorMessage: '',
     sessionId: '',
+    memberName: getMemberFromCookie() || '',
+  },
+  getters: {
+    getMemberName(state) {
+      return state.memberName;
+    },
   },
   mutations: {
     invisibleApiError(state) {
@@ -17,6 +24,9 @@ export default new Vuex.Store({
     visibleApiError(state, message) {
       state.apiError = true;
       state.apiErrorMessage = message;
+    },
+    setMemberName(state, name) {
+      state.memberName = name;
     },
   },
   actions: {

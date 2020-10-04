@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 public class ResponseToLogin {
 
   private String name;
-  private String photo;
+  private String username;
 
 }

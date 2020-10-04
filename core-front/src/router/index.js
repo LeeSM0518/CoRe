@@ -34,6 +34,21 @@ const routes = [
       body: () => import('@/views/HomePage.vue'),
     },
   },
+  {
+    path: '/profile/:name',
+    name: 'Profile',
+    components: {
+      header: () => import('@/components/Header.vue'),
+      body: () => import('@/views/ProfilePage.vue'),
+    },
+  },
+  {
+    path: '/write',
+    name: 'Write',
+    components: {
+      body: () => import('@/views/WritePage.vue'),
+    },
+  },
 ];
 
 const router = new VueRouter({

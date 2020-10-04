@@ -11,26 +11,37 @@
       label="검색"
     ></v-text-field>
     <v-spacer></v-spacer>
-    <v-btn icon class="mr-n3">
-      <v-icon>mdi-apps</v-icon>
+    <v-btn @click="pushlink('/')" icon class="mr-n2">
+      <v-icon>mdi-home</v-icon>
     </v-btn>
-    <v-btn icon class="mr-n3">
-      <v-icon>mdi-apps</v-icon>
+    <v-btn icon class="mr-n2">
+      <v-icon>mdi-chart-line</v-icon>
     </v-btn>
-    <v-btn icon class="mr-n3">
-      <v-icon>mdi-apps</v-icon>
+    <v-btn icon class="mr-n2">
+      <v-icon>mdi-earth</v-icon>
     </v-btn>
-    <v-btn icon class="mr-n3">
-      <v-icon>mdi-apps</v-icon>
+    <v-btn icon class="mr-n2">
+      <v-icon>mdi-thumb-up</v-icon>
     </v-btn>
-    <v-btn icon class="mr-n3">
-      <v-icon>mdi-apps</v-icon>
+    <v-btn
+      @click="pushlink(`/profile/${$store.getters.getMemberName}`)"
+      icon
+      class="mr-n2"
+    >
+      <v-icon>mdi-account-circle</v-icon>
     </v-btn>
   </v-app-bar>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({}),
+  methods: {
+    pushlink(link) {
+      this.$router.push(link);
+    },
+  },
+};
 </script>
 
 <style></style>
