@@ -20,7 +20,7 @@ public class Feed {
   @Column(name = "feed_id")
   private Long id;
 
-  private String summary;
+  private String title;
 
   private String mainCode;
 
@@ -47,10 +47,10 @@ public class Feed {
       inverseJoinColumns = @JoinColumn(name = "member_id"))
   private List<Member> membersWhoLike = new ArrayList<>();
 
-  public static Feed create(String summary, String mainCode, String content, LocalDateTime createdDateTime,
+  public static Feed create(String title, String mainCode, String content, LocalDateTime createdDateTime,
                             List<Hashtag> relatedTags, Member writer) {
     Feed feed = new Feed();
-    feed.setSummary(summary);
+    feed.setTitle(title);
     feed.setMainCode(mainCode);
     feed.setContent(content);
     feed.setCreatedDateTime(createdDateTime);
