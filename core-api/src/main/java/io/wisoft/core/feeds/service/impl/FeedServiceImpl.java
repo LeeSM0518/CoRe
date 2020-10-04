@@ -3,7 +3,6 @@ package io.wisoft.core.feeds.service.impl;
 import io.wisoft.core.accounts.dto.LoginDto;
 import io.wisoft.core.feeds.dto.RequestToCreateFeed;
 import io.wisoft.core.feeds.dto.ResponseToGetFeed;
-import io.wisoft.core.feeds.exception.RelatedTagsNotFoundException;
 import io.wisoft.core.feeds.service.FeedService;
 import io.wisoft.core.root.entity.Feed;
 import io.wisoft.core.root.entity.Hashtag;
@@ -37,17 +36,28 @@ public class FeedServiceImpl implements FeedService {
   public void createFeed(RequestToCreateFeed dto) {
     Member writer = getMemberWhoRequested();
 
-    List<Hashtag> hashtagList = hashtagRepository.findByNames(dto.getRelatedTags());
+    List<Hashtag> createdHashtags = dto.getRelatedTags().stream().map(Hashtag::create).collect(Collectors.toList());
+    List<Hashtag> foundHashtags = hashtagRepository.findByNames(dto.getRelatedTags());
 
-    // TODO 해시태그를 피드 작성할 때 추가 할 수 있으면 아래 로직 수정
-    if (hashtagList == null || hashtagList.size() != dto.getRelatedTags().size())
-      throw new RelatedTagsNotFoundException();
+    List<Hashtag> hashtagList = createdHashtags.stream()
+        .filter(createdTag -> foundHashtags
+            .stream()
+            .noneMatch(foundTag -> createdTag.getName().equals(foundTag.getName())))
+        .collect(Collectors.toList());
 
-    Feed feed = Feed.create(dto.getSummary(), dto.getMainCode(),
-        dto.getContent(), LocalDateTime.now(), hashtagList, writer);
+    hashtagList.forEach(Hashtag::tagged);
+    foundHashtags.forEach(Hashtag::tagged);
+    if (hashtagList.size() != 0)
+      hashtagRepository.saveAll(hashtagList);
+
+    foundHashtags.addAll(hashtagList);
+
+    Feed feed = Feed.create(dto.getTitle(), dto.getMainCode(),
+        dto.getContent(), LocalDateTime.now(), foundHashtags, writer);
     feedRepository.save(feed);
   }
 
+  @Transactional(readOnly = true)
   public List<ResponseToGetFeed> getFeedsByPage(int page) {
     Member member = getMemberWhoRequested();
 
