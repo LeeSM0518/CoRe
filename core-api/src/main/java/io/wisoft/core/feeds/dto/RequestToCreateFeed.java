@@ -15,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class RequestToCreateFeed {
 
-  @NotEmpty(message = "요약을 반드시 입력해야 합니다.")
-  private String summary;
+  @NotEmpty(message = "제목을 반드시 입력해야 합니다.")
+  private String title;
   @NotEmpty(message = "메인 코드를 반드시 입력해야 합니다.")
   private String mainCode;
   @NotEmpty(message = "내용을 반드시 입력해야 합니다.")

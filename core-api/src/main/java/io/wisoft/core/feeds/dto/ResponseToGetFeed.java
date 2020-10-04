@@ -20,7 +20,7 @@ public class ResponseToGetFeed {
 
   private Long id;
 
-  private String summary;
+  private String title;
 
   private String mainCode;
 
@@ -41,7 +41,7 @@ public class ResponseToGetFeed {
         .map(feed ->
             ResponseToGetFeed.builder()
                 .id(feed.getId())
-                .summary(feed.getSummary())
+                .title(feed.getTitle())
                 .mainCode(feed.getMainCode())
                 .content(feed.getContent())
                 .createdDateTime(feed.getCreatedDateTime())
