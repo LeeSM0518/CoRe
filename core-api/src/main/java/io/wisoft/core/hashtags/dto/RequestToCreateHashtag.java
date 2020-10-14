@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class RequestToCreateHashtag {
 
-  @NotBlank(message = "태그 이름을 반드시 입력해주세요.")
+  @NotBlank(message = "{hashtag.name}")
   private String name;
 
 }

@@ -34,6 +34,9 @@ public class EditServiceImpl implements EditService {
   private final MemberRepository memberRepository;
 
   public void changePassword(HttpServletRequest request, HttpServletResponse response, RequestToChangePassword dto) {
+    if (!dto.getNewPassword().equals(dto.getCheckNewPassword()))
+      throw new NewPasswordNotEqualException();
+
     Authentication authentication = getAuthentication();
 
     LoginDto loginDto = (LoginDto) authentication.getPrincipal();
@@ -42,8 +45,6 @@ public class EditServiceImpl implements EditService {
     if (!passwordEncoder.matches(dto.getBeforePassword(), password))
       throw new BeforePasswordNotEqualException();
 
-    if (!dto.getNewPassword().equals(dto.getCheckNewPassword()))
-      throw new NewPasswordNotEqualException();
 
     String email = loginDto.getEmail();
     Member member = memberRepository.findByEmail(email);

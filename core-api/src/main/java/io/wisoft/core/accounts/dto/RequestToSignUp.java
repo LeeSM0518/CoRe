@@ -17,11 +17,11 @@ import java.util.List;
 @AllArgsConstructor
 public class RequestToSignUp {
 
-  @Email(message = "이메일 형식에 맞춰서 요청해야 합니다.")
+  @Email(message = "{signup.email}")
   private String email;
-  @NotBlank(message = "이름을 반드시 입력해주세요. 공백은 입력 불가합니다.")
+  @NotBlank(message = "이름을 반드시 입력해야 합니다.")
   private String name;
-  @NotBlank(message = "비밀번호를 반드시 입력해주세요. 공백은 입력 불가합니다.")
+  @NotBlank(message = "비밀번호를 반드시 입력해야 합니다.")
   private String password;
   @NotEmpty(message = "관심사를 최소 한 개 이상 선택해야 합니다.")
   private List<String> interests;

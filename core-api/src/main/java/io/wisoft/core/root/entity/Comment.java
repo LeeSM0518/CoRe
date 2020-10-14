@@ -13,8 +13,6 @@ public class Comment {
   @Column(name = "comment_id")
   private Long id;
 
-  private int commentedCodeNumber;
-
   private String content;
 
   private LocalDateTime createdDateTime;

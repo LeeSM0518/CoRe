@@ -80,4 +80,8 @@ public class FeedServiceImpl implements FeedService {
     return memberRepository.findByEmail(loginDto.getEmail());
   }
 
+  public void likeFeed(int feedId) {
+
+  }
+
 }

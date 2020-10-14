@@ -59,6 +59,10 @@ public class Feed {
     return feed;
   }
 
+  public void like(Member member) {
+
+  }
+
   public static PageRequest getRequestPageFoundByHashtags(int page) {
     return PageRequest.of(page, 30, Sort.Direction.ASC, "createdDateTime");
   }

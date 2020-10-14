@@ -28,8 +28,8 @@ public class HashtagServiceImpl implements HashtagService {
   private final HashtagRepository hashtagRepository;
 
   public void createHashtag(String name) {
-    if (StringUtils.containsWhitespace(name))
-      throw new HashtagNameContainsWhiteSpaceException();
+//    if (StringUtils.containsWhitespace(name))
+//      throw new HashtagNameContainsWhiteSpaceException();
 
     Hashtag hashtag = hashtagRepository.findByName(name);
 
