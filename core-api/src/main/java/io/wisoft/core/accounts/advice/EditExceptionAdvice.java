@@ -24,14 +24,13 @@ public class EditExceptionAdvice {
   public ResponseEntity<ErrorResponse> beforePasswordNotEqual() {
     return ResponseEntity
         .status(HttpStatus.CONFLICT)
-        .body(new ErrorResponse("이전 비밀번호가 틀렸습니다."));
+        .body(new ErrorResponse("기존 비밀번호가 일치하지 않습니다."));
   }
-
   @ExceptionHandler(NewPasswordNotEqualException.class)
   public ResponseEntity<ErrorResponse> newPasswordNotEqual() {
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)
-        .body(new ErrorResponse("새 비밀번호와 새 비밀번호 확인이 서로 다릅니다."));
+        .body(new ErrorResponse("새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다."));
   }
 
   @ExceptionHandler(MultipartNotFoundException.class)

@@ -16,14 +16,14 @@ public class HashtagExceptionAdvice {
   public ResponseEntity<ErrorResponse> hashtagDuplicate() {
     return ResponseEntity
         .status(HttpStatus.CONFLICT)
-        .body(new ErrorResponse("해시태그가 이미 존재합니다."));
+        .body(new ErrorResponse("태그가 이미 존재합니다."));
   }
 
   @ExceptionHandler(HashtagNameContainsWhiteSpaceException.class)
   public ResponseEntity<ErrorResponse> hashtagNameContainsWhiteSpace() {
     return ResponseEntity
         .status(HttpStatus.BAD_REQUEST)
-        .body(new ErrorResponse("태그에 공백은 기입할 수 없습니다."));
+        .body(new ErrorResponse("태그에 공백을 기입할 수 없습니다."));
   }
 
   @ExceptionHandler(HashtagNameContainsSpecialCharException.class)
