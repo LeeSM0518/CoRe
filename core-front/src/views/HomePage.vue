@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row v-for="feed in feeds" :key="feed.id" align="start" justify="center">
-      <v-col md="10" lg="6" sm="12">
+      <v-col md="10" lg="8" sm="12">
         <v-card width="100%">
           <v-card-title>
             <v-avatar v-if="feed.writer.photo !== null" size="36">
@@ -57,9 +57,11 @@
               </v-col>
 
               <v-col cols="12" class="ml-1">
-                <a class="black--text" @click="likeDialog = !likeDialog">{{
-                  feed.membersWhoLike.length
-                }}</a>
+                <a
+                  class="black--text"
+                  @click="openLikeDialog(feed.membersWhoLike)"
+                  >{{ feed.membersWhoLike.length }}</a
+                >
                 이 좋아합니다</v-col
               >
               <v-col cols="12" class="ml-1 mt-n5">
@@ -85,38 +87,10 @@
       <v-icon large>mdi-pencil-box</v-icon>
     </v-btn>
     <v-dialog v-model="likeDialog" width="500">
-      <v-card>
-        <v-card-title class="ma-n1">
-          <p class="text-h6 mt-2">좋아요</p>
-          <v-spacer></v-spacer>
-          <v-btn @click="likeDialog = !likeDialog" class="mt-n2" icon>
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </v-card-title>
-        <v-divider></v-divider>
-        <v-card-text>
-          <v-row class="mt-3">
-            <v-col>
-              <v-avatar size="44">
-                <img
-                  alt="user"
-                  src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg"
-                />
-              </v-avatar>
-              <span class="text-subtitle-1 ml-2"><b>sangmin98</b></span>
-            </v-col>
-            <v-col cols="12">
-              <v-avatar size="44">
-                <img
-                  alt="user"
-                  src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg"
-                />
-              </v-avatar>
-              <span class="text-subtitle-1 ml-2"><b>sangmin98</b></span>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
+      <LikeDialog
+        :members="membersWhoLike"
+        @close-like-dialog="closeLikeDialog"
+      ></LikeDialog>
     </v-dialog>
   </v-container>
 </template>
@@ -124,11 +98,17 @@
 <script>
 import { md } from '@/utils/markdown.js';
 import { getFeedsForPage } from '@/api/feeds.js';
+import LikeDialog from '@/components/home/LikeDialog.vue';
 
 export default {
+  components: {
+    LikeDialog,
+  },
+
   data: () => ({
     feeds: [],
     likeDialog: false,
+    membersWhoLike: [],
     items: [
       { title: 'Click Me' },
       { title: 'Click Me' },
@@ -138,6 +118,14 @@ export default {
   }),
 
   methods: {
+    openLikeDialog(members) {
+      this.membersWhoLike = members;
+      this.likeDialog = true;
+    },
+
+    closeLikeDialog() {
+      this.likeDialog = false;
+    },
     pushWrite() {
       this.$router.push('/write');
     },

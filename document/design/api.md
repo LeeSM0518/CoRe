@@ -28,8 +28,8 @@
 - [ ] **GET /api/members/{memberName}/following** : 해당 회원 팔로우 조회
 - [ ] **GET /api/members/{memberName}/followers** : 해당 회원의 팔로워 조회
 - [ ] **GET /api/members/{memberName}/history** : 해당 회원의 활동들 조회
-- [ ] **POST /api/members/{memberName}/feeds/{feedId}/like** : 해당 회원이 해당 피드의 좋아요 생성
-- [ ] **DELETE /api/members/{memberName}/feeds/{feedId}/like** : 해당 회원이 해당 피드의 좋아요 삭제
+- [ ] **POST /api/feeds/{feedId}/like** : 해당 회원이 해당 피드의 좋아요 생성
+- [ ] **DELETE /api/feeds/{feedId}/like** : 해당 회원이 해당 피드의 좋아요 삭제
 - [ ] **POST /api/members/{memberName}/comments/{commentId}/like** : 해당 회원이 해당 댓글의 좋아요 생성
 - [ ] **DELETE /api/members/{memberName}/comments/{commentId}/like** : 해당 회원이 해당 댓글의 좋아요 삭제
 - [x] **POST /api/hashtags** : 해시태그 생성
@@ -311,7 +311,7 @@
     "mainCode": "String",  // 메인 코드 블록
     "content": "String",   // 내용
     "relatedTags": [       // 관련 주제(해시 태그)
-      "String"
+      "String", ...
     ]
   }
   ```
@@ -321,6 +321,16 @@
   * `200` : 성공
   * `400` : 데이터 형식 에러
   * `404` : 해당 관련 주제를 찾을 수 없음
+
+<br>
+
+## POST /api/feeds/{feedId}/like
+
+해당 회원이 해당 피드의 좋아요 생성
+
+* **request**
+  * `feedId` : 피드 ID
+* **response**
 
 <br>
 

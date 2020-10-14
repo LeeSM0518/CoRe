@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar outlined app absolute flat style="background-color: white;">
+  <v-app-bar outlined app flat style="background-color: white;">
     <v-img src="../../public/img/main2.png" max-width="180" class="mt-2" />
     <v-spacer></v-spacer>
     <v-text-field
