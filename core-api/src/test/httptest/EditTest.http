@@ -13,7 +13,7 @@ PUT http://localhost:8888/api/accounts/edit/profile
 Content-Type: application/json
 
 {
-  "name": "min9",
+  "name": " ",
   "website": "https://github.com/LeeSM0518",
   "introduction": "설명",
   "isPublicEmail": false

@@ -2,7 +2,7 @@ POST http://localhost:8888/api/accounts/signup/email
 Content-Type: application/json
 
 {
-  "email": "nalsm0518@gmail.com"
+  "email": "20171687@edu.hanbat.ac.kr"
 }
 
 ###
@@ -11,8 +11,8 @@ POST http://localhost:8888/api/accounts/signup/code
 Content-Type: application/json
 
 {
-  "email": "nalsm0518@gmail.com",
-  "code": "378876"
+  "email": "20171687@edu.hanbat.ac.kr",
+  "code": "72578356"
 }
 
 ###
@@ -21,8 +21,8 @@ POST http://localhost:8888/api/accounts/signup
 Content-Type: application/json
 
 {
-  "email": "nalsm0518@gmail.com",
-  "name": "min",
+  "email": " ",
+  "name": "a a",
   "password": "1234",
   "interests": [
     "java"
